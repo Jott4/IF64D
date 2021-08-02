@@ -5,19 +5,20 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class Conta {
+abstract class Conta implements ContaInterface {
+
     private final String nome;
     private final String cpf;
     private float saldo;
     private final ArrayList<Investimento> investimentos = new ArrayList<Investimento>();
-
-
 
     Conta(String nome, String cpf, float valor) {
         this.saldo = valor;
         this.nome = nome;
         this.cpf = cpf;
     }
+
+
 
     public String getNome() {
         return nome;
@@ -32,20 +33,19 @@ public class Conta {
         this.saldo = saldo;
     }
 
-
+    @Override
     public void depositar(float valorDepositado) {
         this.saldo += valorDepositado;
     }
-
-    public void withdraw(float valorRetirado) {
+    @Override
+    public final void withdraw(float valorRetirado) {
         if(valorRetirado > this.saldo) {
             System.out.println("Saldo insuficinete");
         }
         this.saldo = this.saldo - valorRetirado;
     }
-
-
-    public void comprar(@NotNull Investimento i) {
+    @Override
+    public final void comprar(@NotNull Investimento i) {
         if(i.getValor() > this.saldo) {
             System.out.println("Saldo insuficinete");
             return;
@@ -53,8 +53,8 @@ public class Conta {
         this.saldo = this.saldo - i.getValor();
         this.investimentos.add(i);
     }
-
-    public void vender(Investimento i) {
+    @Override
+    public final void vender(Investimento i) {
         if(!investimentos.contains(i)) {
             System.out.println("Você não pode vender uma ação que não tem");
             return;

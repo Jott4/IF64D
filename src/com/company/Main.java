@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
-    static Conta criarConta() {
+    static final Conta criarConta() {
         Scanner sc = new Scanner(System.in);
 
         String nome;
@@ -18,7 +18,7 @@ public class Main {
         cpf = sc.nextLine();
         System.out.println("Digite seu saldo inicial");
         saldo = sc.nextFloat();
-        Conta c1 = new Conta(nome, cpf, saldo);
+        ContaCorrente c1 = new ContaCorrente(nome, cpf, saldo);
         return c1;
     }
 
@@ -29,19 +29,14 @@ public class Main {
         Investimento i1 = new Investimento(1000, (float) 0.15, 120);
         investimentos.add(i1);
         int flag = 1;
-//        criar investimento
-//        investir
-//        adicionar dinheiro
-//        remover dinheiro
-//        liquidar(dias)
         Conta myConta = criarConta();
         System.out.println("-----------------------------------------------");
         System.out.printf("Nome %s , cpf %s, saldo %.2f R$\n", myConta.getNome(), myConta.getCpf(), myConta.getSaldo());
         System.out.println("-----------------------------------------------");
         while (true) {
             for (int i = 0; i < investimentos.size(); i++) {
-                System.out.printf("Investimento Nº" + i);
-                System.out.printf("valor %.2f\n", investimentos.get(i).getValor());
+                System.out.printf("Investimento Nº " + i);
+                System.out.printf("\nvalor %.2f\n", investimentos.get(i).getValor());
                 System.out.printf("taxa %.2f percent\n", investimentos.get(i).getTaxa() * 100);
 
                 System.out.print("prazo: ");

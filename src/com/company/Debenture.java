@@ -3,7 +3,7 @@ package com.company;
 
 import java.time.LocalDate;
 
-public class Debenture  extends Investimento{
+public class Debenture extends Investimento{
     String empresaResponsavel;
 
     public Debenture(float _valor, float _taxa, int _prazo, String _empresaResponsavel) {

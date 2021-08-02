@@ -25,7 +25,7 @@ public class Investimento {
     }
 
 
-    public float liquidar() {
+    public final float liquidar() {
         return (float) (valor + (valor * Math.pow((1+taxa), prazo/30)));
     }
 
